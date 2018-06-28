@@ -24,10 +24,6 @@ buildscript {
     }
 }
 
-task jar(type: Jar) {
-    from android.sourceSets.main.output
-}
-
 android {
     compileSdkVersion 27
 
