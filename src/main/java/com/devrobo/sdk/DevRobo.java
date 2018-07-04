@@ -27,7 +27,7 @@ public class DevRobo {
 
     private static volatile DevRobo instance;
 
-    private static final String ApiUrl = "https://ba7dadd4.ngrok.io";
+    private static final String ApiUrl = "https://api.devrobo.com/";
     private Context cnt;
     private String ApiKey;
     private String DeviceID;
@@ -89,6 +89,11 @@ public class DevRobo {
             }
             waiting_data = new ArrayList<HashMap<String, String>>();
         }
+    }
+
+    public static void Event(String eventName, String eventValue) {
+        DevRobo el = getInstance();
+        el.send(eventName, eventValue);
     }
 
     public static void Log(String message) {
