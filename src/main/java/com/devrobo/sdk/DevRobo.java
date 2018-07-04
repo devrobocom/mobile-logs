@@ -27,7 +27,7 @@ public class DevRobo {
 
     private static volatile DevRobo instance;
 
-    private static final String ApiUrl = "https://api.devrobo.com/";
+    private static final String ApiUrl = "https://api.devrobo.com";
     private Context cnt;
     private String ApiKey;
     private String DeviceID;
