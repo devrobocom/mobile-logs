@@ -30,9 +30,10 @@ public class DevRobo {
     private static final String ApiUrl = "https://api.devrobo.com";
     private Context cnt;
     private String ApiKey;
+    private String AppName;
     private String DeviceID;
     private String TAG = "DevRobo";
-    private int SDKVersion = 1;
+    private int SDKVersion = 2;
 
     private ArrayList<HashMap<String, String>> waiting_data;
 
@@ -47,13 +48,14 @@ public class DevRobo {
         bus.register(this);
     }
 
-    public static void initialize(Context cnt, String apiKey) {
+    public static void initialize(Context cnt, String apiKey, String AppName) {
         DevRobo inst = getInstance();
         inst.cnt = cnt;
 
         inst.queue = Volley.newRequestQueue(cnt);
         inst.queue.stop();
         inst.ApiKey = apiKey;
+        inst.AppName = AppName;
         inst.getDeviceToken();
     }
 
@@ -115,6 +117,7 @@ public class DevRobo {
             params.put("device_name", helpers.getDeviceName());
             params.put("sdk_version", String.format("%d",SDKVersion));
             params.put("device_type", "android");
+            params.put("app_name", AppName);
             params.put("api_key", ApiKey );
 
             JSONObject parameters = new JSONObject(params);
