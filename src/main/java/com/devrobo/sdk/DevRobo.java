@@ -87,7 +87,11 @@ public class DevRobo {
             Log.d(TAG, "waiting " + w_size + " event");
 
             for (HashMap<String, String> my_el : waiting_data) {
-                send(my_el.get("type").toString(), my_el.get("message").toString());
+                try {
+                    send(my_el.get("type").toString(), my_el.get("message").toString());
+                }catch(Exception e) {
+                    
+                }
             }
             waiting_data = new ArrayList<HashMap<String, String>>();
         }
